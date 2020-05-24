@@ -1,0 +1,136 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>测试游览器设备信息</title>
+		<!-- Copyright© https://smalbox.top -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+    	    p {
+    	        background-color: #DCDCDC;
+    	    }
+    	</style>
+	</head>
+	<body data-gr-c-s-loaded="true">
+		<h1>测试游览器设备信息</h1>
+		<hr>
+
+	    <button type="button" id="getNavigatorInfoBtn" onclick="GetNavigatorInfo()">获取Navigator信息</button>
+	    <button type="button" id="getUserCurrPosBtn" onclick="GetUserCurrPos()">获取当前位置信息</button>
+	    <button type="button" id="getScreenInfoBtn" onclick="GetScreenInfo()">获取Screen信息</button>
+	    <button type="button" id="getDPRBtn" onclick="GetDPRInfo()">获取DPR信息</button>
+	    <button type="button" id="resetBtn" onclick="ResetInfo()">重置信息</button>
+	    <div id="info"></div>
+
+		<script>
+			// DPR
+			function GetDPRInfo()
+			{
+				txt = "<p>设备像素比率(Device Pixel Ratio / DPR)：" + devicePixelRatio + "</p>";
+				document.getElementById("info").innerHTML = txt;
+			}
+			 
+            function GetNavigatorInfo()
+            {
+                txt = "<p>浏览器代号: " + navigator.appCodeName + "</p>";
+                txt+= "<p>浏览器版本: " + navigator.appVersion + "</p>";
+                txt+= "<p>用户代理: " + navigator.userAgent + "</p>"; // 是代号+版本
+                txt+= "<p>浏览器名称: " + navigator.appName + "</p>";
+                txt+= "<p>启用Cookies: " + navigator.cookieEnabled + "</p>";
+                txt+= "<p>硬件平台: " + navigator.platform + "</p>";
+                txt+= "<p>用户代理语言: " + navigator.systemLanguage + "</p>";
+                txt+= "<p>返回VRDisplay对象中的各种属性：" + navigator.activeVRDisplays + "</p>"; // 返回VRDisplay对象中的各种属性：undefined
+                txt+= "<p>剪切板：" + navigator.clipboard + "</p>"; // 剪切板：[object Clipboard]
+                txt+= "<p>证书：" + navigator.credentials + "</p>"; // 证书：[object CredentialsContainer]
+                txt+= "<p>不追踪：" + navigator.doNotTrack + "</p>"; // 不追踪：1
+                txt+= "<p>地理位置：" + navigator.geolocation + "</p>"; // 地理位置：[object Geolocation]
+                txt+= "<p>硬件并发：" + navigator.hardwareConcurrency + "</p>"; // 硬件并发：16
+                txt+= "<p>语言：" + navigator.language + "</p>"; // 语言：zh-CN
+                txt+= "<p>语言族：" + navigator.languages + "</p>"; // 语言族：zh-CN,zh,zh-HK,en
+                txt+= "<p>最大触摸点数" + navigator.maxTouchPoints + "</p>"; // 最大触摸点数：0
+                txt+= "<p>媒体设备" + navigator.mediaDevices + "</p>"; // 媒体设备：[object MediaDevices]
+                txt+= "<p>多用途网络邮件扩展类型MIME类型：" + navigator.mimeTypes + "</p>"; // 多用途网络邮件扩展类型MIME类型：[object MimeTypeArray]
+                txt+= "<p>微软操作视图开启：" + navigator.msManipulationViewsEnabled + "</p>"; // 微软操作视图开启：undefined
+                txt+= "<p>微软最大触摸点数：" + navigator.msMaxTouchPoints + "</p>"; // 微软最大触摸点数：undefined
+                txt+= "<p>微软指针启用：" + navigator.msPointerEnabled + "</p>"; // 微软指针启用：undefined
+                txt+= "<p>是否在线：" + navigator.onLine + "</p>"; // 是否在线：true
+                txt+= "<p>返回点给钱操作系统名：" + navigator.oscpu + "</p>"; // 返回点给钱操作系统名：undefined
+                txt+= "<p>许可权：" + navigator.permissions + "</p>"; // 许可权：[object Permissions]
+                txt+= "<p>游览器安装的插件：" + navigator.plugins + "</p>"; // 游览器安装的插件：[object PluginArray]
+                txt+= "<p>指针启用：" + navigator.pointerEnabled + "</p>"; // 指针启用：undefined
+                txt+= "<p>游览器引擎产品名称(所有都返回Gecko，只用于兼容目的)：" + navigator.product + "</p>"; // 游览器引擎产品名称(所有都返回Gecko，只用于兼容目的)：Gecko
+                txt+= "<p>游览器编译版本号(chrome一直是20030107)：" + navigator.productSub + "</p>"; // 游览器编译版本号(chrome一直是20030107)：20030107
+                txt+= "<p>serviceWorker：" + navigator.serviceWorker + "</p>"; // serviceWorker：[object ServiceWorkerContainer]
+                txt+= "<p>存储：" + navigator.storage + "</p>"; // 存储：[object StorageManager]
+                txt+= "<p>游览器提供商：" + navigator.vendor + "</p>"; // 游览器提供商：Google Inc.
+                txt+= "<p>游览器供应商版本号：" + navigator.vendorSub + "</p>"; // 游览器供应商版本号：undefined
+                txt+= "<p>web驱动程序(如果是游览器是undefined，爬虫是true)：" + navigator.webdriver + "</p>"; // web驱动程序(如果是游览器是undefined，爬虫是true)：undefined
+                txt+= "<p>返回BatteryManager对象，获取电池充电状态信息：" + navigator.battery + "</p>"; // 返回BatteryManager对象，获取电池充电状态信息
+                txt+= "<p>网络状态：" + navigator.connection.type + "</p>"; // 网络状态：undefined
+                txt+= "<p>网络连接最大速度：" + navigator.connection.downLinkMax + "</p>"; // 网络连接最大速度：undefined
+                document.getElementById("info").innerHTML=txt;
+            }
+
+            function GetUserCurrPos()
+            {
+                var txt = "<p>正在获取位置信息……</p>";
+                txt += "<p>请允许使用位置信息！</p>";
+                document.getElementById("info").innerHTML=txt;
+                var options = {
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0
+                };
+        
+                function success(pos) {
+                  var crd = pos.coords;
+        
+                  console.log('Your current position is:');
+                  console.log('Latitude : ' + crd.latitude);
+                  console.log('Longitude: ' + crd.longitude);
+                  console.log('More or less ' + crd.accuracy + ' meters.');
+                  txt = "<p>经度：" + crd.longitude + "</p>";
+                  txt += "<p>纬度：" + crd.latitude + "</p>";
+                  txt += "<p>精确度：" + crd.accuracy + "米" + "</p>";
+                  document.getElementById("info").innerHTML=txt;
+                };
+        
+                function error(err) {
+                  console.warn('ERROR(' + err.code + '): ' + err.message);
+                  txt = "<p>获取位置失败！</p>" + 'ERROR(' + err.code + '): ' + err.message;
+                  document.getElementById("info").innerHTML=txt;
+                };
+        
+                navigator.geolocation.getCurrentPosition(success, error, options)
+            }
+
+            function GetScreenInfo()
+            {
+                txt = "<p>窗口可用空间高度：" + screen.availHeight + "px</p>";
+                txt += "<p>窗口可用空间宽度：" + screen.availWidth + "px</p>";
+                txt += "<p>屏幕高度：" + screen.height + "px</p>";
+                txt += "<p>屏幕宽度：" + screen.width + "px</p>";
+                txt += "<p>屏幕色彩深度：" + screen.colorDepth + "</p>";
+                txt += "<p>当前屏幕转向：" + screen.orientation.type +
+                    "<br> portrait-primary/secondary 竖直模式" +
+                    "<br> landscape-primary/secondary 横向模式" +
+                    "</p>";
+                txt += "<p>获取屏幕的位深度/色彩深度：" + screen.pixelDepth + "</p>";
+                document.getElementById("info").innerHTML=txt;
+            }
+
+            function ResetInfo()
+            {
+                p = new Promise(resolve => {
+                    txt = "<p>已重置！</p>";
+                    document.getElementById("info").innerHTML=txt;
+                    setTimeout(() => {
+                        resolve();
+                    }, 2000);
+                });
+                p.then(() => {
+                    txt = "<p>点击以上功能按钮，显示相应信息。</p>";
+                    document.getElementById("info").innerHTML=txt;
+                });
+            }
+		</script>
+	
+
+</body></html>
