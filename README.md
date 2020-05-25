@@ -9,3 +9,4 @@
    - 获取当前位置经纬度坐标
    - 获取 Screen 信息
    - 获取 Device Pixel Ratio (设备像素比率/DPR) 信息
+   - 获取 Window 信息 （部分）

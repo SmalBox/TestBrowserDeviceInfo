@@ -16,11 +16,27 @@
 	    <button type="button" id="getUserCurrPosBtn" onclick="GetUserCurrPos()">获取当前位置信息</button>
 	    <button type="button" id="getScreenInfoBtn" onclick="GetScreenInfo()">获取Screen信息</button>
 	    <button type="button" id="getDPRBtn" onclick="GetDPRInfo()">获取DPR信息</button>
+	    <button type="button" id="getWindowInfoBtn" onclick="GetWindowInfo()">获取Window信息</button>
 	    <button type="button" id="resetBtn" onclick="ResetInfo()">重置信息</button>
 	    <div id="info"></div>
 
 		<script>
-			// DPR
+            function GetWindowInfo()
+            {
+                txt = "<p>游览器窗口视口高度：" + window.innerHeight + "px</p>";
+                txt += "<p>游览器窗口视口宽度：" + window.innerWidth + "px</p>";
+                txt += "<p>游览器窗口外层高度：" + window.outerHeight + "px</p>";
+                txt += "<p>游览器窗口外层宽度：" + window.outerWidth + "px</p>";
+                txt += "<p>页面是否是安全上下文：" + window.isSecureContext + "</p>";
+                txt += "<p>窗口中框架数量：" + window.length + "</p>";
+                txt += "<p>是否支持本地存储：" + (window.localStorage instanceof Storage) + "</p>";
+                txt += "<p style=\"word-wrap:break-word\">本页URL：" + String(window.location) + "</p>";
+                txt += "<p>位置栏是否可见：" + window.locationbar.visible + "</p>";
+                txt += "<p>菜单栏是否可见：" + window.menubar.visible + "</p>";
+                txt += "<p>：" + window + "</p>";
+                document.getElementById("info").innerHTML=txt;
+            }
+
 			function GetDPRInfo()
 			{
 				txt = "<p>设备像素比率(Device Pixel Ratio / DPR)：" + devicePixelRatio + "</p>";
